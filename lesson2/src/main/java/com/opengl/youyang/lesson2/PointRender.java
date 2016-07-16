@@ -24,8 +24,20 @@ public class PointRender implements GLSurfaceView.Renderer {
         mContext = context;
     }
 
+//    float[] mVertex = new float[]{
+//            0f,0f
+//    } ;
+
+    float aPoint = 0.8f;
     float[] mVertex = new float[]{
-            0f,0f
+            -aPoint,aPoint,
+            -aPoint,-aPoint,
+            aPoint,-aPoint,
+
+            aPoint,-aPoint,
+            aPoint,aPoint,
+            -aPoint,aPoint
+
     } ;
 
     private ColorShaderProgram mColorShaderProgram;
@@ -38,14 +50,14 @@ public class PointRender implements GLSurfaceView.Renderer {
 
         mFloatBuffer = ByteBuffer.allocateDirect(mVertex.length*4).order(ByteOrder.nativeOrder())
                 .asFloatBuffer().put(mVertex);
+        mFloatBuffer.position(0);
 
         mColorShaderProgram.useProgram();
-        mColorShaderProgram.setUniforms(0.1f,0.4f,0.9f);
+        mColorShaderProgram.setUniforms(0.9f,0.4f,0.9f);
 
-        mFloatBuffer.position(0);
-        GLES20.glVertexAttribPointer(mColorShaderProgram.getPositionAttributionLocation(),2,GLES20.GL_FLOAT,false,0,mFloatBuffer);
+        GLES20.glVertexAttribPointer(mColorShaderProgram.getPositionAttributionLocation(),2,GLES20.GL_FLOAT,false,2*4,mFloatBuffer);
         GLES20.glEnableVertexAttribArray(mColorShaderProgram.getPositionAttributionLocation());
-        mFloatBuffer.position(0);
+//        mFloatBuffer.position(0);
 
 
     }
@@ -58,7 +70,8 @@ public class PointRender implements GLSurfaceView.Renderer {
     @Override
     public void onDrawFrame(GL10 gl) {
         GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT);
-        GLES20.glDrawArrays(GLES20.GL_POINTS,0,1);
+//        GLES20.glDrawArrays(GLES20.GL_POINTS,0,1);
+        GLES20.glDrawArrays(GLES20.GL_TRIANGLE_STRIP,0,6);
     }
 
 }
