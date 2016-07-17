@@ -59,9 +59,10 @@ public class PointRender implements GLSurfaceView.Renderer {
     int[] ids;
     private ColorShaderProgram mColorShaderProgram;
 
+
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {
-
+        mColorShaderProgram = new ColorShaderProgram(mContext);
         new Thread(){
             @Override
             public void run() {
@@ -78,8 +79,6 @@ public class PointRender implements GLSurfaceView.Renderer {
         mResources[0] = R.drawable.img_guider_checkin;
         mResources[1] = R.drawable.img_loading;
         ids = TextureHelper.loadTexture(mContext,mResources);
-
-        mColorShaderProgram = new ColorShaderProgram(mContext);
 
         mFloatBuffer = ByteBuffer.allocateDirect(mVertex.length * 4).order(ByteOrder.nativeOrder())
                 .asFloatBuffer().put(mVertex);
@@ -122,8 +121,6 @@ public class PointRender implements GLSurfaceView.Renderer {
         GLES20.glActiveTexture(GLES20.GL_TEXTURE1);
         GLES20.glUniform1i(mColorShaderProgram.getUniformToLocation(), 1);
         GLES20.glBindTexture(GLES20.GL_TEXTURE_2D,ids[1]);
-
-
 
         GLES20.glDrawArrays(GLES20.GL_TRIANGLE_FAN, 0, 6);
     }

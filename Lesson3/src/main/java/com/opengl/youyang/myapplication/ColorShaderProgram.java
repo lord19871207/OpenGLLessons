@@ -19,15 +19,14 @@ public class ColorShaderProgram extends ShaderProgram{
 
 
     public ColorShaderProgram(Context context){
-    super(context,R.raw.point_vertext_shader,R.raw.point_fragment_shader);
-        u_ColorLocation= GLES20.glGetUniformLocation(mProgram,U_COLOR);
+    super(context,R.raw.point_vertext_shader,R.raw.translate4_fragment_shader);
+    u_ColorLocation= GLES20.glGetUniformLocation(mProgram,U_COLOR);
         aPositionLocation=GLES20.glGetAttribLocation(mProgram,A_POSITION);
         aTexturreCoordLocation = GLES20.glGetAttribLocation(mProgram,A_TEXCOOR);
         u_Progress = GLES20.glGetUniformLocation(mProgram,U_PROGRESS);
         u_InterpolationPower = GLES20.glGetUniformLocation(mProgram,U_INTERPOLATIONPOWER);
         u_From = GLES20.glGetUniformLocation(mProgram,U_FROM);
         u_To = GLES20.glGetUniformLocation(mProgram,U_TO);
-//        u_Resolution = GLES20.glGetUniformLocation(mProgram,U_RESOLUTION);
     }
 
     public void setUniforms(float r,float g,float b){
@@ -38,7 +37,6 @@ public class ColorShaderProgram extends ShaderProgram{
     public void setUniformProgressAndInterpolationPower(float progress, float interpolationPower){
         GLES20.glUniform1f(u_Progress,progress);
         GLES20.glUniform1f(u_InterpolationPower,interpolationPower);
-//        GLES20.glUniform2f(u_Resolution,1440f, 2160f);
 
     }
 

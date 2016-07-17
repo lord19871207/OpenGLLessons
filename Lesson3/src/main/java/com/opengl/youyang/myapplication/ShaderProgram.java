@@ -20,7 +20,7 @@ public class ShaderProgram {
     protected static final String A_TEXCOOR = "a_TexCoor";
 
 
-    protected final int mProgram;
+    protected int mProgram;
 
     protected ShaderProgram(Context context, int vertexShaderResourceId, int fragmentShaderResourceId) {
         mProgram = ShaderHelper.buildProgram(TextResourceReader.readTextResourceFromRaw(context,
