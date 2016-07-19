@@ -18,8 +18,8 @@ public class ColorShaderProgram extends ShaderProgram{
 
 
 
-    public ColorShaderProgram(Context context){
-    super(context,R.raw.point_vertext_shader,R.raw.translate4_fragment_shader);
+    public ColorShaderProgram(Context context,int index){
+    super(context,index);
     u_ColorLocation= GLES20.glGetUniformLocation(mProgram,U_COLOR);
         aPositionLocation=GLES20.glGetAttribLocation(mProgram,A_POSITION);
         aTexturreCoordLocation = GLES20.glGetAttribLocation(mProgram,A_TEXCOOR);

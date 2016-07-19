@@ -24,8 +24,10 @@ public class PointRender implements GLSurfaceView.Renderer {
 
     float m = 0;
 
-    public PointRender(Context context) {
+    int mIndex = 0;
+    public PointRender(Context context,int index) {
         mContext = context;
+        mIndex = index;
     }
 
     private int[] mResources = new int[2];
@@ -62,7 +64,7 @@ public class PointRender implements GLSurfaceView.Renderer {
 
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {
-        mColorShaderProgram = new ColorShaderProgram(mContext);
+        mColorShaderProgram = new ColorShaderProgram(mContext,mIndex);
         new Thread(){
             @Override
             public void run() {

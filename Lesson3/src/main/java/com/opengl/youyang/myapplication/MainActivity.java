@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         //第一步 检验是否支持opengl 2.0
         final boolean isSuppotES2 = isSupportES2();
         //第二步创建渲染器
-        render = new PointRender(this);
+        render = new PointRender(this,getIntent().getIntExtra("index",0));
 
 //        render.setShader(this,R.raw.point_vertext_shader,R.raw.translate2_fragment_shader);
 
@@ -69,19 +69,8 @@ public class MainActivity extends AppCompatActivity {
                         view.queueEvent(new Runnable() {
                             @Override
                             public void run() {
-
-                                process = moveX / size[0];
-                                float k = process % limit;
-
-                                if (process > limit) {
-                                    process = 0;
-                                    count++;
-                                }
-                                if (count % 2 == 0) {
-                                    render.setProcess(k);
-                                } else {
-                                    render.setProcess(limit - k);
-                                }
+                                process = Math.abs(moveX / size[0]);
+                                render.setProcess(process);
                                 Log.d("youyang", "process :" + process);
                             }
                         });
@@ -201,14 +190,13 @@ public class MainActivity extends AppCompatActivity {
                 mMoveX = event.getX();
                 mMoveY = event.getY();
 
-
                 break;
 
             case MotionEvent.ACTION_UP:
             case MotionEvent.ACTION_CANCEL:
                 mLastTouchX = event.getX();
                 mLastTouchY = event.getY();
-//                startScollAnimation(false);
+                startScollAnimation(false);
                 break;
             default:
                 break;
@@ -224,8 +212,7 @@ public class MainActivity extends AppCompatActivity {
                 // 手左右来回划，最后滑的方向是从右往左
 //                distance = mTouchDownX - mLastTouchX > 0 ? (int) (mTouchDownX - mLastTouchX)
 //                        - mWidth : (int) (mLastTouchX - mWidth);
-                distance = mTouchDownX - mLastTouchX > 0 ? (int) (mTouchDownX - mLastTouchX)
-                        - size[0] : (int) (-size[0] + mTouchDownX - mLastTouchX);
+                distance = (int) - mLastTouchX;
             } else {
                 distance = mTouchDownX - mLastTouchX > 0 ? (int) (mTouchDownX - mLastTouchX) : 0;
             }
@@ -301,26 +288,15 @@ public class MainActivity extends AppCompatActivity {
 
             boolean more = mScroller.computeScrollOffset();// 返回true的话则动画还没有结束
             final int x = mScroller.getCurrX();// 返回滚动时 当前的x坐标
-            Log.d("youyang","mScroller.getCurrX()"+x);
+//            Log.d("youyang", "mScroller.getCurrX()" + x);
             int delta = mLastFlingX - x;
             if (delta != 0) {
                 mMoveX += delta;
-                Log.d("youyang","mMoveX"+mMoveX +", size[0]:"+size[0]);
+//                Log.d("youyang", "mMoveX" + mMoveX + ", size[0]:" + size[0]);
 
                 float process = Math.abs(mMoveX) / (size[0]);
-                float k = process % limit;
-
-                if (process > limit) {
-                    process = 0;
-                    count++;
-                }
-                if (count % 2 == 0) {
-                    render.setProcess(k);
-                } else {
-                    render.setProcess(limit - k);
-
-                }
-
+                Log.d("youyang", "process" + process);
+                render.setProcess(process);
                 view.requestRender();
             }
             if (more) {

@@ -3,10 +3,11 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Lesson1/Lesson1.iml" filepath="$PROJECT_DIR$/Lesson1/Lesson1.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Lesson2/lesson2.iml" filepath="$PROJECT_DIR$/Lesson2/lesson2.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Lesson3/myapplication.iml" filepath="$PROJECT_DIR$/Lesson3/myapplication.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lesson2/Lesson2.iml" filepath="$PROJECT_DIR$/Lesson2/Lesson2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lesson3/Lesson3.iml" filepath="$PROJECT_DIR$/Lesson3/Lesson3.iml" />
       <module fileurl="file://$PROJECT_DIR$/OpenGLLessons.iml" filepath="$PROJECT_DIR$/OpenGLLessons.iml" />
       <module fileurl="file://$PROJECT_DIR$/Lesson1/app.iml" filepath="$PROJECT_DIR$/Lesson1/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lesson3/myapplication.iml" filepath="$PROJECT_DIR$/Lesson3/myapplication.iml" />
     </modules>
   </component>
 </project>

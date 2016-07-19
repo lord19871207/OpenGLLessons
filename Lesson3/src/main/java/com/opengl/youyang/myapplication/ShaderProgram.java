@@ -22,10 +22,36 @@ public class ShaderProgram {
 
     protected int mProgram;
 
-    protected ShaderProgram(Context context, int vertexShaderResourceId, int fragmentShaderResourceId) {
-        mProgram = ShaderHelper.buildProgram(TextResourceReader.readTextResourceFromRaw(context,
-                vertexShaderResourceId), TextResourceReader.readTextResourceFromRaw(context,
-                fragmentShaderResourceId));
+    protected ShaderProgram(Context context, int index) {
+        switch (index){
+            case 0:
+                mProgram = ShaderHelper.buildProgram(TextResourceReader.readTextResourceFromRaw(context,
+                        R.raw.point_vertext_shader), TextResourceReader.readTextResourceFromRaw(context,
+                        R.raw.translate1_fragment_shader));
+                break;
+            case 1:
+                mProgram = ShaderHelper.buildProgram(TextResourceReader.readTextResourceFromRaw(context,
+                        R.raw.point_vertext_shader), TextResourceReader.readTextResourceFromRaw(context,
+                        R.raw.translate2_fragment_shader));
+                break;
+            case 2:
+                mProgram = ShaderHelper.buildProgram(TextResourceReader.readTextResourceFromRaw(context,
+                        R.raw.point_vertext_shader), TextResourceReader.readTextResourceFromRaw(context,
+                        R.raw.translate3_fragment_shader));
+                break;
+            case 3:
+                mProgram = ShaderHelper.buildProgram(TextResourceReader.readTextResourceFromRaw(context,
+                        R.raw.point_vertext_shader), TextResourceReader.readTextResourceFromRaw(context,
+                        R.raw.translate4_fragment_shader));
+                break;
+            case 4:
+                mProgram = ShaderHelper.buildProgram(TextResourceReader.readTextResourceFromRaw(context,
+                        R.raw.point_vertext_shader), TextResourceReader.readTextResourceFromRaw(context,
+                        R.raw.point_fragment_shader));
+                break;
+
+        }
+
     }
 
     public void useProgram(){
