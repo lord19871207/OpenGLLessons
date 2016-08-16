@@ -65,18 +65,9 @@ public class PointRender implements GLSurfaceView.Renderer {
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {
         mColorShaderProgram = new ColorShaderProgram(mContext,mIndex);
-        new Thread(){
-            @Override
-            public void run() {
-                super.run();
-                SystemClock.sleep(10);
-            }
-        }.start();
         GLES20.glClearColor(0f, 0f, 0f, 0f);
-
         GLES20.glEnable(GLES20.GL_DEPTH_TEST);
         GLES20.glDisable(GLES20.GL_CULL_FACE);
-
 
         mResources[0] = R.drawable.img_guider_checkin;
         mResources[1] = R.drawable.img_loading;

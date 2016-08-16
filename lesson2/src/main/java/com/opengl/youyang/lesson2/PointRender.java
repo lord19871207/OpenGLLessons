@@ -64,14 +64,17 @@ public class PointRender implements GLSurfaceView.Renderer {
 
     @Override
     public void onSurfaceChanged(GL10 gl, int width, int height) {
+        //设置显示区域大小和位置
         GLES20.glViewport(0,0,width,height);
     }
 
     @Override
     public void onDrawFrame(GL10 gl) {
         GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT);
-//        GLES20.glDrawArrays(GLES20.GL_POINTS,0,1);
-        GLES20.glDrawArrays(GLES20.GL_TRIANGLE_STRIP,0,6);
+
+//        最终的绘制方法
+        GLES20.glDrawArrays(GLES20.GL_POINTS,0,1);
+//        GLES20.glDrawArrays(GLES20.GL_TRIANGLE_STRIP,0,6);
     }
 
 }

@@ -9,10 +9,20 @@ import android.util.Log;
 public class ShaderHelper {
     private static final String TAG="ShaderHelper";
 
+    /**
+     * 编译顶点着色器
+     * @param shaderCode
+     * @return
+     */
     public static int  compileVertexShader(String shaderCode){
         return compileShader(GLES20.GL_VERTEX_SHADER,shaderCode);
     }
 
+    /**
+     * 编译片元着色器
+     * @param shaderCode
+     * @return
+     */
     public static int compileFragmentShader(String shaderCode){
         return compileShader(GLES20.GL_FRAGMENT_SHADER,shaderCode);
     }
