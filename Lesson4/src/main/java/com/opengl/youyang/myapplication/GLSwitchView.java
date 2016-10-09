@@ -53,7 +53,6 @@ public class GLSwitchView extends GLSurfaceView {
         int mScreenHeight = localDisplayMetrics.heightPixels;
         int mScreenWidth = localDisplayMetrics.widthPixels;
         int[] size = {mScreenWidth, mScreenHeight};
-        localDisplayMetrics = null;
         return size;
     }
 
