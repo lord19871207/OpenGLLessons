@@ -27,7 +27,7 @@ public class ShaderProgram {
             case 0:
                 mProgram = ShaderHelper.buildProgram(TextResourceReader.readTextResourceFromRaw(context,
                         R.raw.point_vertext_shader), TextResourceReader.readTextResourceFromRaw(context,
-                        R.raw.translate5_fragment_shader));
+                        R.raw.translate9_fragment_shader));
                 break;
             case 1:
                 mProgram = ShaderHelper.buildProgram(TextResourceReader.readTextResourceFromRaw(context,

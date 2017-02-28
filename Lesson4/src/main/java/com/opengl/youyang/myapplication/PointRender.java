@@ -22,7 +22,7 @@ public class PointRender implements GLSurfaceView.Renderer {
 
     private Context mContext;
 
-    float m = 0;
+    float mProgress = 0;
 
     int mIndex = 0;
     public PointRender(Context context,int index) {
@@ -69,8 +69,10 @@ public class PointRender implements GLSurfaceView.Renderer {
         GLES20.glEnable(GLES20.GL_DEPTH_TEST);
         GLES20.glDisable(GLES20.GL_CULL_FACE);
 
-        mResources[0] = R.drawable.img_guider_checkin;
-        mResources[1] = R.drawable.img_loading;
+//        mResources[0] = R.drawable.img_loadings;
+//        mResources[1] = R.drawable.img_loading;
+        mResources[0] = R.drawable.test_1;
+        mResources[1] = R.drawable.test_2;
         ids = TextureHelper.loadTexture(mContext,mResources);
 
         mFloatBuffer = ByteBuffer.allocateDirect(mVertex.length * 4).order(ByteOrder.nativeOrder())
@@ -84,12 +86,16 @@ public class PointRender implements GLSurfaceView.Renderer {
     }
 
     public void setProcess(float m){
-        this.m = m;
+        this.mProgress = m;
     }
 
     @Override
     public void onSurfaceChanged(GL10 gl, int width, int height) {
         GLES20.glViewport(0, 0, width, height);
+    }
+
+    public void setIds(int[] resources){
+//        this.ids =TextureHelper.loadTexture(mContext,resources);
     }
 
     @Override
@@ -99,7 +105,12 @@ public class PointRender implements GLSurfaceView.Renderer {
         mColorShaderProgram.useProgram();
 //        mColorShaderProgram.setUniforms(0.9f, 0.4f, 0.9f);
 
-        mColorShaderProgram.setUniformProgressAndInterpolationPower(m,5f);
+        if(mIndex == 0){
+            mColorShaderProgram.setUniformProgressAndInterpolationPower(SystemClock.currentThreadTimeMillis(),5f);
+        }else{
+            mColorShaderProgram.setUniformProgressAndInterpolationPower(mProgress,5f);
+        }
+
 
 
         GLES20.glVertexAttribPointer(mColorShaderProgram.getPositionAttributionLocation(), 2, GLES20.GL_FLOAT, false, 2 * 4, mFloatBuffer);

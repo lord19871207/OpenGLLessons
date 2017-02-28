@@ -20,7 +20,7 @@ import javax.microedition.khronos.opengles.GL10;
  * Created by youyang on 16/5/24.
  */
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-public class PreviewGLRender implements GLSurfaceView.Renderer ,SurfaceTexture.OnFrameAvailableListener{
+public class PreviewGLRender implements GLSurfaceView.Renderer, SurfaceTexture.OnFrameAvailableListener {
 
     private FloatBuffer mFloatBuffer;
 
@@ -32,7 +32,7 @@ public class PreviewGLRender implements GLSurfaceView.Renderer ,SurfaceTexture.O
     SurfaceTexture mSurfaceTexture;
     private ViewListener mListener;
 
-    public PreviewGLRender(Context context){
+    public PreviewGLRender(Context context) {
         mContext = context;
     }
 
@@ -53,13 +53,15 @@ public class PreviewGLRender implements GLSurfaceView.Renderer ,SurfaceTexture.O
     };
 
     float[] mTextureCoord = new float[]{
-            0f, 0f,
-            0f, 1f,
-            1f, 1f,
 
-            1f, 1f,
-            1f, 0f,
-            0f, 0f
+            0f, 1f,    //1
+            1f, 1f,    //2
+            1f, 0f,    //3
+
+            1f, 0f,    //3
+            0f, 0f,    //0
+            0f, 1f     //1
+
     };
 
     private ColorShaderProgram mColorShaderProgram;
@@ -71,13 +73,13 @@ public class PreviewGLRender implements GLSurfaceView.Renderer ,SurfaceTexture.O
 
         mCamera = Camera.open();
 
-        GLES20.glClearColor(0.0f,0.5f,0.3f,0.4f);
+        GLES20.glClearColor(0.0f, 0.5f, 0.3f, 0.4f);
 
         mColorShaderProgram = new ColorShaderProgram(mContext);
 
-        mFloatBuffer = ByteBuffer.allocateDirect(mVertex.length*4).order(ByteOrder.nativeOrder())
+        mFloatBuffer = ByteBuffer.allocateDirect(mVertex.length * 4).order(ByteOrder.nativeOrder())
                 .asFloatBuffer().put(mVertex);
-        mTextureBuffer = ByteBuffer.allocateDirect(mTextureCoord.length*4).order(ByteOrder.nativeOrder())
+        mTextureBuffer = ByteBuffer.allocateDirect(mTextureCoord.length * 4).order(ByteOrder.nativeOrder())
                 .asFloatBuffer().put(mTextureCoord);
         mFloatBuffer.position(0);
         mTextureBuffer.position(0);
@@ -96,11 +98,11 @@ public class PreviewGLRender implements GLSurfaceView.Renderer ,SurfaceTexture.O
         mCamera.startPreview();
 
 
-        GLES20.glVertexAttribPointer(mColorShaderProgram.getPositionAttributionLocation(),2,GLES20.GL_FLOAT,false,2*4,mFloatBuffer);
+        GLES20.glVertexAttribPointer(mColorShaderProgram.getPositionAttributionLocation(), 2, GLES20.GL_FLOAT, false, 2 * 4, mFloatBuffer);
         GLES20.glEnableVertexAttribArray(mColorShaderProgram.getPositionAttributionLocation());
 //        mFloatBuffer.position(0);
         GLES20.glEnableVertexAttribArray(mColorShaderProgram.getTextureCoordAttributionLocation());
-        GLES20.glVertexAttribPointer(mColorShaderProgram.getTextureCoordAttributionLocation(),2,GLES20.GL_FLOAT,false,2*4,mTextureBuffer);
+        GLES20.glVertexAttribPointer(mColorShaderProgram.getTextureCoordAttributionLocation(), 2, GLES20.GL_FLOAT, false, 2 * 4, mTextureBuffer);
     }
 
 
@@ -113,7 +115,7 @@ public class PreviewGLRender implements GLSurfaceView.Renderer ,SurfaceTexture.O
     @Override
     public void onSurfaceChanged(GL10 gl, int width, int height) {
         //设置显示区域大小和位置
-        GLES20.glViewport(0,0,width,height);
+        GLES20.glViewport(0, 0, width, height);
     }
 
     @Override

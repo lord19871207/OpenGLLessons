@@ -1,10 +1,12 @@
 package com.opengl.youyang.myapplication;
 
+import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 /**
@@ -13,7 +15,7 @@ import android.widget.Toast;
  * 这节课开始接触着色器，用着色器 绘制一个普通的顶点Point 1.学会写简单的着色器 2.了解如何加载着色器 3.学会如何在java代码中动态给着色器的属性赋值
  */
 
-public class MainActivity extends AppCompatActivity implements GLSwitchView.RenderListener{
+public class MainActivity extends Activity implements GLSwitchView.RenderListener{
 
     GLSwitchView mView;
     PointRender mRender;
@@ -22,18 +24,26 @@ public class MainActivity extends AppCompatActivity implements GLSwitchView.Rend
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         mView = new GLSwitchView(this);
         //第一步 检验是否支持opengl 2.0
         final boolean isSuppotES2 = isSupportES2();
         //第二步创建渲染器
-        mRender = new PointRender(this,getIntent().getIntExtra("index",0));
+        int index = getIntent().getIntExtra("index",0);
+        mRender = new PointRender(this,index);
         if (isSuppotES2) {
             //设定egl版本
             mView.setEGLContextClientVersion(2);
             //设置渲染器，设置完这一步之后相当于开启了 另一条渲染线程
             mView.setRenderer(mRender);
             //设置渲染模式 一直渲染
-            mView.setRenderMode(GLSurfaceView.RENDERMODE_WHEN_DIRTY);
+
+            if(index == 0){
+                mView.setRenderMode(GLSurfaceView.RENDERMODE_CONTINUOUSLY);
+            } else {
+                mView.setRenderMode(GLSurfaceView.RENDERMODE_WHEN_DIRTY);
+            }
+
 
             mView.setRenderListener(this);
         } else {
@@ -70,4 +80,5 @@ public class MainActivity extends AppCompatActivity implements GLSwitchView.Rend
     public void setProcess(float process) {
         mRender.setProcess(process);
     }
+
 }

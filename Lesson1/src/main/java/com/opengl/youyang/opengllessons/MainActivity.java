@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
      * 5.如何设置背景
      */
     
-    GLSurfaceView mGLSurfaceView;
+    private GLSurfaceView mGLSurfaceView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
