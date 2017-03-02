@@ -14,8 +14,9 @@ void main() {
     vec2 offset8 = vec2(1.0,1.0);
 
 //    const float scaleFactor = 1.0/9.0;//调整亮度
-    const float scaleFactor = 2.9;//调整亮度
+    const float scaleFactor = 1.9;//调整亮度
 
+    //边缘检测
     float kernelValue0 = 0.0;
     float kernelValue1 = 1.0;
     float kernelValue2 = 0.0;
@@ -25,6 +26,17 @@ void main() {
     float kernelValue6 = 0.0;
     float kernelValue7 = 1.0;
     float kernelValue8 = 0.0;
+
+//浮雕效果
+//    float kernelValue0 = 2.0;
+//    float kernelValue1 = 0.0;
+//    float kernelValue2 = 2.0;
+//    float kernelValue3 = 0.0;
+//    float kernelValue4 = 0.0;
+//    float kernelValue5 = 0.0;
+//    float kernelValue6 = 3.0;
+//    float kernelValue7 = 0.0;
+//    float kernelValue8 = -6.0;
 
     vec4 sum;
 
@@ -45,5 +57,9 @@ void main() {
     kernelValue2*cTemp2 + kernelValue3*cTemp3 + kernelValue4*cTemp4 +
     kernelValue5*cTemp5 + kernelValue6*cTemp6 + kernelValue7*cTemp7 + kernelValue8*cTemp8;
 
-   gl_FragColor = sum * scaleFactor;;
+    //灰度化
+//    float hd = (sum.r + sum.g +sum.b)/3.0;
+
+//   gl_FragColor = vec4(hd) * scaleFactor;
+    gl_FragColor = sum * scaleFactor;
 }

@@ -25,12 +25,23 @@ public class SplashActivity extends Activity implements View.OnClickListener {
         Button button3 = (Button) findViewById(R.id.button3);
         Button button4 = (Button) findViewById(R.id.button4);
         Button button5 = (Button) findViewById(R.id.button5);
+        Button button6 = (Button) findViewById(R.id.button6);
+        Button button7 = (Button) findViewById(R.id.button7);
+        Button button8 = (Button) findViewById(R.id.button8);
+        Button button9 = (Button) findViewById(R.id.button9);
+        Button button10 = (Button) findViewById(R.id.button10);
+
 
         button1.setOnClickListener(this);
         button2.setOnClickListener(this);
         button3.setOnClickListener(this);
         button4.setOnClickListener(this);
         button5.setOnClickListener(this);
+        button6.setOnClickListener(this);
+        button7.setOnClickListener(this);
+        button8.setOnClickListener(this);
+        button9.setOnClickListener(this);
+        button10.setOnClickListener(this);
     }
 
     @Override
@@ -51,6 +62,22 @@ public class SplashActivity extends Activity implements View.OnClickListener {
             case R.id.button5:
                 intent.putExtra("index",4);
                 break;
+            case R.id.button6:
+                intent.putExtra("index",5);
+                break;
+            case R.id.button7:
+                intent.putExtra("index",6);
+                break;
+            case R.id.button8:
+                intent.putExtra("index",7);
+                break;
+            case R.id.button9:
+                intent.putExtra("index",8);
+                break;
+            case R.id.button10:
+                intent.putExtra("index",9);
+                break;
+
         }
             startActivity(intent);
     }

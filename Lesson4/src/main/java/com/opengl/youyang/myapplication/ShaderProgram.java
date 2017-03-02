@@ -27,7 +27,7 @@ public class ShaderProgram {
             case 0:
                 mProgram = ShaderHelper.buildProgram(TextResourceReader.readTextResourceFromRaw(context,
                         R.raw.point_vertext_shader), TextResourceReader.readTextResourceFromRaw(context,
-                        R.raw.translate9_fragment_shader));
+                        R.raw.translate1_fragment_shader));
                 break;
             case 1:
                 mProgram = ShaderHelper.buildProgram(TextResourceReader.readTextResourceFromRaw(context,
@@ -45,6 +45,31 @@ public class ShaderProgram {
                         R.raw.translate4_fragment_shader));
                 break;
             case 4:
+                mProgram = ShaderHelper.buildProgram(TextResourceReader.readTextResourceFromRaw(context,
+                        R.raw.point_vertext_shader), TextResourceReader.readTextResourceFromRaw(context,
+                        R.raw.translate5_fragment_shader));
+                break;
+            case 5:
+                mProgram = ShaderHelper.buildProgram(TextResourceReader.readTextResourceFromRaw(context,
+                        R.raw.point_vertext_shader), TextResourceReader.readTextResourceFromRaw(context,
+                        R.raw.translate6_fragment_shader));
+                break;
+            case 6:
+                mProgram = ShaderHelper.buildProgram(TextResourceReader.readTextResourceFromRaw(context,
+                        R.raw.point_vertext_shader), TextResourceReader.readTextResourceFromRaw(context,
+                        R.raw.translate7_fragment_shader));
+                break;
+            case 7:
+                mProgram = ShaderHelper.buildProgram(TextResourceReader.readTextResourceFromRaw(context,
+                        R.raw.point_vertext_shader), TextResourceReader.readTextResourceFromRaw(context,
+                        R.raw.translate8_fragment_shader));
+                break;
+            case 8:
+                mProgram = ShaderHelper.buildProgram(TextResourceReader.readTextResourceFromRaw(context,
+                        R.raw.point_vertext_shader), TextResourceReader.readTextResourceFromRaw(context,
+                        R.raw.translate10_fragment_shader));
+                break;
+            case 9:
                 mProgram = ShaderHelper.buildProgram(TextResourceReader.readTextResourceFromRaw(context,
                         R.raw.point_vertext_shader), TextResourceReader.readTextResourceFromRaw(context,
                         R.raw.point_fragment_shader));

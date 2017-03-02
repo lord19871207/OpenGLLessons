@@ -69,10 +69,10 @@ public class PointRender implements GLSurfaceView.Renderer {
         GLES20.glEnable(GLES20.GL_DEPTH_TEST);
         GLES20.glDisable(GLES20.GL_CULL_FACE);
 
-//        mResources[0] = R.drawable.img_loadings;
-//        mResources[1] = R.drawable.img_loading;
-        mResources[0] = R.drawable.test_1;
-        mResources[1] = R.drawable.test_2;
+        mResources[0] = R.drawable.img_loadings;
+        mResources[1] = R.drawable.img_loading;
+//        mResources[0] = R.drawable.test_1;
+//        mResources[1] = R.drawable.test_2;
         ids = TextureHelper.loadTexture(mContext,mResources);
 
         mFloatBuffer = ByteBuffer.allocateDirect(mVertex.length * 4).order(ByteOrder.nativeOrder())
@@ -105,11 +105,11 @@ public class PointRender implements GLSurfaceView.Renderer {
         mColorShaderProgram.useProgram();
 //        mColorShaderProgram.setUniforms(0.9f, 0.4f, 0.9f);
 
-        if(mIndex == 0){
-            mColorShaderProgram.setUniformProgressAndInterpolationPower(SystemClock.currentThreadTimeMillis(),5f);
-        }else{
+//        if(mIndex == 0){
+//            mColorShaderProgram.setUniformProgressAndInterpolationPower(SystemClock.currentThreadTimeMillis(),5f);
+//        }else{
             mColorShaderProgram.setUniformProgressAndInterpolationPower(mProgress,5f);
-        }
+//        }
 
 
 
