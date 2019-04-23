@@ -42,3 +42,7 @@
 <div style="text-align:center">
 <img src="https://github.com/lord19871207/OpenGLLessons/blob/master/lesson6.gif"/>
 </div>
+
+
+<a href="https://996.icu"><img src="https://img.shields.io/badge/link-996.icu-red.svg" alt="996.icu" /></a>
+
